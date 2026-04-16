@@ -13,7 +13,7 @@ import {
   HelpCircle, DollarSign, CalendarClock, Users, Megaphone,
   GraduationCap, Smile, Briefcase, Stethoscope, ShoppingBag,
   UtensilsCrossed, Home, Car, Scissors, PawPrint, Dumbbell,
-  Scale, Wrench, Camera, Palette, Music, Plane
+  Lock, Scale, Wrench, Camera, Palette, Music, Plane
 } from "lucide-react";
 
 type Step = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -474,12 +474,12 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* STEP 4: Connect WhatsApp */}
+        {/* STEP 4: Conectar canais */}
         {step === 4 && (
           <div className="space-y-7">
             <div>
-              <h1 className="text-2xl font-extrabold text-white tracking-tight">Conectar WhatsApp</h1>
-              <p className="text-white/40 mt-1 text-[14px]">Vincule o numero que o bot vai usar para atender.</p>
+              <h1 className="text-2xl font-extrabold text-white tracking-tight">Conectar canais</h1>
+              <p className="text-white/40 mt-1 text-[14px]">Vincule os canais que o bot vai usar para atender.</p>
             </div>
 
             {!qrCode && !waConnected && (
@@ -538,6 +538,25 @@ export default function OnboardingPage() {
                 </div>
               </div>
             )}
+
+            {/* Instagram — Em breve */}
+            <GlassCard className="p-4 relative overflow-hidden opacity-50 cursor-not-allowed">
+              <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/15">
+                <span className="text-[10px] font-bold text-purple-300/70 uppercase tracking-wider">Em breve</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <AtSign className="w-5 h-5 text-purple-400/60" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="text-[14px] font-semibold text-white/50">Instagram DM</p>
+                    <Lock className="w-3 h-3 text-white/20" />
+                  </div>
+                  <p className="text-[11px] text-white/25 mt-0.5">Atendimento automatico via Direct. Mesma IA, mesmo bot.</p>
+                </div>
+              </div>
+            </GlassCard>
           </div>
         )}
 
@@ -652,14 +671,15 @@ export default function OnboardingPage() {
                 { label: "Bot", value: botName || "Assistente" },
                 { label: "Tom", value: TONES.find(t => t.id === botTone)?.label || botTone },
                 { label: "WhatsApp", value: "Conectado", green: true },
+                { label: "Instagram", value: "Em breve", purple: true },
                 { label: "Qualificacao", value: `${selectedQuestions.length} perguntas` },
               ].map((row, i) => (
                 <div key={i}>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-white/40">{row.label}</span>
-                    <span className={`font-medium ${row.green ? "text-[#2dd272]" : "text-white/80"}`}>{row.value}</span>
+                    <span className={`font-medium ${row.green ? "text-[#2dd272]" : row.purple ? "text-purple-400/60" : "text-white/80"}`}>{row.value}</span>
                   </div>
-                  {i < 5 && <div className="h-px bg-white/[0.04] mt-3" />}
+                  {i < 6 && <div className="h-px bg-white/[0.04] mt-3" />}
                 </div>
               ))}
             </GlassCard>
