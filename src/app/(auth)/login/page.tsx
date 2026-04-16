@@ -38,76 +38,75 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex">
       {/* Left — Branding */}
-      <div className="hidden lg:flex lg:w-[45%] bg-gradient-to-br from-[#0f6b3a] to-[#0a4d2a] flex-col justify-between p-12 text-white">
+      <div className="hidden lg:flex lg:w-[45%] bg-gradient-to-br from-[#0d5c30] via-[#0f6b3a] to-[#072918] flex-col justify-between p-12 text-white">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur">
-            <EcoZapIcon className="w-6 h-6" />
+          <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
+            <EcoZapIcon className="w-5 h-5" />
           </div>
-          <span className="text-xl font-semibold tracking-tight">EcoZap</span>
+          <span className="text-lg font-semibold tracking-tight">EcoZap</span>
         </div>
 
         <div className="space-y-6">
           <h1 className="text-4xl font-bold leading-tight tracking-tight">
-            Seu negocio no<br />
-            WhatsApp. Automatizado.
+            Seu negocio no<br />WhatsApp. Automatizado.
           </h1>
-          <p className="text-white/70 text-lg leading-relaxed max-w-md">
-            Qualifique leads, atenda clientes e escale seu atendimento com inteligencia com aspecto natural — tudo pelo WhatsApp.
+          <p className="text-white/60 text-lg leading-relaxed max-w-md">
+            Qualifique leads, atenda clientes e escale seu atendimento com inteligencia natural — tudo pelo WhatsApp.
           </p>
         </div>
 
-        <p className="text-white/40 text-sm">&copy; {new Date().getFullYear()} EcoZap</p>
+        <p className="text-white/30 text-sm">&copy; {new Date().getFullYear()} EcoZap</p>
       </div>
 
       {/* Right — Form */}
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex items-center justify-center p-8 bg-[#fafaf8]">
         <div className="w-full max-w-sm space-y-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-3 mb-4">
-            <div className="w-11 h-11 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
               <EcoZapIcon className="w-5 h-5 text-white" />
             </div>
             <span className="text-lg font-semibold tracking-tight">EcoZap</span>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">Entrar</h2>
-            <p className="text-zinc-500 mt-1">Acesse seu painel de controle</p>
+            <h2 className="text-2xl font-bold tracking-tight text-[#111113]">Entrar</h2>
+            <p className="text-zinc-400 mt-1 text-[15px]">Acesse seu painel de controle</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-zinc-700">Email</label>
+              <label className="text-[13px] font-medium text-zinc-600">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="seu@email.com"
                 required
-                className="w-full h-11 px-3.5 rounded-lg border border-zinc-200 bg-white text-sm
-                  placeholder:text-zinc-400 outline-none
-                  focus:border-[#0f6b3a] focus:ring-2 focus:ring-[#0f6b3a]/10
+                className="w-full h-11 px-3.5 rounded-lg border border-zinc-200/80 bg-white text-sm
+                  placeholder:text-zinc-300 outline-none
+                  focus:border-[#0f6b3a]/40 focus:ring-2 focus:ring-[#0f6b3a]/8
                   transition-all duration-200"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-zinc-700">Senha</label>
+              <label className="text-[13px] font-medium text-zinc-600">Senha</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full h-11 px-3.5 rounded-lg border border-zinc-200 bg-white text-sm
-                  placeholder:text-zinc-400 outline-none
-                  focus:border-[#0f6b3a] focus:ring-2 focus:ring-[#0f6b3a]/10
+                className="w-full h-11 px-3.5 rounded-lg border border-zinc-200/80 bg-white text-sm
+                  placeholder:text-zinc-300 outline-none
+                  focus:border-[#0f6b3a]/40 focus:ring-2 focus:ring-[#0f6b3a]/8
                   transition-all duration-200"
               />
             </div>
 
             {error && (
-              <p className="text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg">{error}</p>
+              <p className="text-[13px] text-red-600 bg-red-50/80 px-3 py-2 rounded-lg">{error}</p>
             )}
 
             <button
@@ -129,16 +128,16 @@ export default function LoginPage() {
               <div className="w-full border-t border-zinc-100" />
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-white px-3 text-xs text-zinc-400 uppercase tracking-wider">ou</span>
+              <span className="bg-[#fafaf8] px-3 text-[11px] text-zinc-400 uppercase tracking-wider">ou</span>
             </div>
           </div>
 
           <button
             onClick={handleGoogle}
-            className="w-full h-11 border border-zinc-200 text-sm font-medium rounded-lg
-              hover:bg-zinc-50 active:scale-[0.98]
+            className="w-full h-11 border border-zinc-200/80 bg-white text-sm font-medium rounded-lg
+              hover:bg-zinc-50/80 active:scale-[0.98]
               transition-all duration-200
-              flex items-center justify-center gap-2.5"
+              flex items-center justify-center gap-2.5 text-zinc-700"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
@@ -149,7 +148,7 @@ export default function LoginPage() {
             Continuar com Google
           </button>
 
-          <p className="text-center text-sm text-zinc-500">
+          <p className="text-center text-sm text-zinc-400">
             Nao tem conta?{" "}
             <Link href="/signup" className="text-[#0f6b3a] font-medium hover:underline">
               Criar agora
