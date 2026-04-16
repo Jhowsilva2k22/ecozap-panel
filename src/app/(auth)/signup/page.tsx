@@ -4,7 +4,8 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Zap, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { EcoZapIcon } from "@/components/ecozap-icon";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -79,7 +80,7 @@ export default function SignupPage() {
       <div className="hidden lg:flex lg:w-[45%] bg-gradient-to-br from-[#0f6b3a] to-[#0a4d2a] flex-col justify-between p-12 text-white">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur">
-            <Zap className="w-5 h-5" />
+            <EcoZapIcon className="w-5 h-5" />
           </div>
           <span className="text-xl font-semibold tracking-tight">EcoZap</span>
         </div>
@@ -117,7 +118,7 @@ export default function SignupPage() {
         <div className="w-full max-w-sm space-y-8">
           <div className="lg:hidden flex items-center gap-3 mb-4">
             <div className="w-9 h-9 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
+              <EcoZapIcon className="w-4 h-4 text-white" />
             </div>
             <span className="text-lg font-semibold tracking-tight">EcoZap</span>
           </div>
