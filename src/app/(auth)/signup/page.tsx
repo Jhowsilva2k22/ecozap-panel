@@ -21,27 +21,51 @@ export default function SignupPage() {
     setLoading(true);
     setError("");
 
+    if (!name.trim()) {
+      setError("Informe seu nome.");
+      setLoading(false);
+      return;
+    }
+
     if (password.length < 6) {
       setError("A senha precisa ter pelo menos 6 caracteres.");
       setLoading(false);
       return;
     }
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: name },
-      },
-    });
+    try {
+      const { error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: name },
+        },
+      });
 
-    if (error) {
-      setError(error.message === "User already registered" ? "Email ja cadastrado." : error.message);
+      if (signUpError) {
+        if (signUpError.message === "User already registered") {
+          setError("Email ja cadastrado.");
+        } else if (signUpError.message.includes("Invalid API key") || signUpError.message.includes("fetch")) {
+          setError("Erro de configuracao do servidor. Tente novamente em instantes.");
+        } else if (signUpError.message.includes("rate") || signUpError.message.includes("limit")) {
+          setError("Muitas tentativas. Aguarde alguns minutos.");
+        } else {
+          setError(signUpError.message);
+        }
+        setLoading(false);
+        return;
+      }
+
+      setSuccess(true);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Erro inesperado";
+      if (message.includes("Failed to fetch") || message.includes("NetworkError")) {
+        setError("Sem conexao com o servidor. Verifique sua internet.");
+      } else {
+        setError("Erro ao criar conta: " + message);
+      }
       setLoading(false);
-      return;
     }
-
-    setSuccess(true);
   }
 
   async function handleGoogle() {
@@ -201,7 +225,7 @@ export default function SignupPage() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Joanderson Silva"
+                    placeholder="Seu nome completo"
                     required
                     className="w-full h-12 px-4 rounded-xl bg-white/[0.05] border border-white/[0.08] text-[14px] text-white
                       placeholder:text-white/20 outline-none
