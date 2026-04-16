@@ -51,7 +51,7 @@ export default function LoginPage() {
             WhatsApp. Automatizado.
           </h1>
           <p className="text-white/70 text-lg leading-relaxed max-w-md">
-            Qualifique leads, atenda clientes e escale seu atendimento com inteligencia artificial — tudo pelo WhatsApp.
+            Qualifique leads, atenda clientes e escale seu atendimento com inteligencia com aspecto natural — tudo pelo WhatsApp.
           </p>
         </div>
 
