@@ -1,1 +1,40 @@
-@import 'tailwindcss';\n\n@theme {\n  --color-brand: #0f6b3a;\n  --color-brand-light: #e8f5ee;\n  --color-brand-dark: #0a4d2a;\n  --color-text-primary: #1a1a1a;\n  --color-text-secondary: #71717a;\n  --color-border: #e4e4e7;\n  --color-background: #fafafa;\n}\n\n@layer base {\n  * {\n    @apply box-border;\n  }\n\n  html {\n    font-size: 16px;\n  }\n\n  body {\n    @apply bg-white text-[var(--color-text-primary)] antialiased;\n  }\n\n  ::selection {\n    @apply bg-[var(--color-brand-light)] text-[var(--color-brand)];\n  }\n}
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: #0f6b3a;
+  --color-brand-light: #e8f5ee;
+  --color-brand-dark: #0a4d2a;
+  --color-gold: #c8a45e;
+  --color-gold-light: #faf5e8;
+  --color-surface: #fafafa;
+  --color-surface-alt: #f4f4f5;
+  --color-border: #e4e4e7;
+  --color-text: #18181b;
+  --color-text-secondary: #71717a;
+  --color-background: #ffffff;
+  --color-foreground: #18181b;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium input styling */
+input, textarea, select {
+  font-family: var(--font-sans);
+}
+
+/* Subtle selection */
+::selection {
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
+}

@@ -1,1 +1,49 @@
-async function request(endpoint: string, options?: RequestInit) {\n  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://your-api.railway.app';\n  const url = `${apiUrl}${endpoint}`;\n\n  const { data: { session } } = await (await import('./supabase')).supabase.auth.getSession();\n  const token = session?.access_token;\n\n  const headers = new Headers(options?.headers || {});\n  headers.set('Content-Type', 'application/json');\n  if (token) {\n    headers.set('Authorization', `Bearer ${token}`);\n  }\n\n  const response = await fetch(url, {\n    ...options,\n    headers,\n  });\n\n  if (!response.ok) {\n    throw new Error(`API error: ${response.statusText}`);\n  }\n\n  return response.json();\n}\n\nexport const api = {\n  async getTenant() {\n    return request('/tenant');\n  },\n\n  async getStats() {\n    return request('/tenant/stats');\n  },\n\n  async updateProfile(data: any) {\n    return request('/tenant', { method: 'PATCH', body: JSON.stringify(data) });\n  },\n\n  async setupBot(data: any) {\n    return request('/bot/setup', { method: 'POST', body: JSON.stringify(data) });\n  },\n\n  async connectWhatsApp(phone?: string) {\n    return request('/whatsapp/connect', {\n      method: 'POST',\n      body: JSON.stringify({ phone }),\n    });\n  },\n\n  async whatsappStatus() {\n    return request('/whatsapp/status');\n  },\n\n  async addKnowledge(links: string[]) {\n    return request('/knowledge', {\n      method: 'POST',\n      body: JSON.stringify({ links }),\n    });\n  },\n\n  async getCustomers(limit = 20, offset = 0, status?: string) {\n    const params = new URLSearchParams({ limit: limit.toString(), offset: offset.toString() });\n    if (status) params.append('status', status);\n    return request(`/customers?${params}`);\n  },\n};
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://web-production-ae1319.up.railway.app";
+
+async function request(path: string, options: RequestInit = {}) {
+  const token =
+    typeof window !== "undefined"
+      ? (await import("./supabase")).supabase.auth
+          .getSession()
+          .then((s) => s.data.session?.access_token)
+      : null;
+
+  const jwt = await token;
+
+  const res = await fetch(`${API_URL}${path}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(jwt ? { Authorization: `Bearer ${jwt}` } : {}),
+      ...options.headers,
+    },
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: "Erro desconhecido" }));
+    throw new Error(err.detail || `Erro ${res.status}`);
+  }
+  return res.json();
+}
+
+export const api = {
+  getTenant: () => request("/api/tenant/me"),
+  getStats: () => request("/api/tenant/stats"),
+  updateProfile: (data: Record<string, string>) =>
+    request("/api/tenant/profile", { method: "PUT", body: JSON.stringify(data) }),
+  setupBot: (data: Record<string, string>) =>
+    request("/api/tenant/bot", { method: "PUT", body: JSON.stringify(data) }),
+  connectWhatsApp: (phone?: string) =>
+    request("/api/tenant/connect-whatsapp", {
+      method: "POST",
+      body: JSON.stringify({ phone_number: phone || null }),
+    }),
+  whatsappStatus: () => request("/api/tenant/whatsapp-status"),
+  addKnowledge: (links: string[]) =>
+    request("/api/tenant/knowledge", { method: "POST", body: JSON.stringify({ links }) }),
+  getCustomers: (limit = 50, offset = 0, status?: string) => {
+    const params = new URLSearchParams({ limit: String(limit), offset: String(offset) });
+    if (status) params.set("status", status);
+    return request(`/api/tenant/customers?${params}`);
+  },
+};
