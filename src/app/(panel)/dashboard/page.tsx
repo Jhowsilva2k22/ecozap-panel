@@ -6,10 +6,11 @@ import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  Zap, Users, MessageSquare, Flame, TrendingUp,
+  Users, MessageSquare, Flame, TrendingUp,
   Smartphone, BookOpen, Settings, LogOut, ChevronRight,
   BarChart3, Clock, CheckCircle, AlertCircle
 } from "lucide-react";
+import { EcoZapIcon } from "@/components/ecozap-icon";
 
 interface Stats {
   total_leads: number;
@@ -108,7 +109,7 @@ export default function DashboardPage() {
         <div className="p-6 border-b border-zinc-100">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
+              <EcoZapIcon className="w-4 h-4 text-white" />
             </div>
             <div>
               <div className="font-semibold text-sm tracking-tight">EcoZap</div>
@@ -142,7 +143,7 @@ export default function DashboardPage() {
         <div className="lg:hidden sticky top-0 z-10 bg-white border-b border-zinc-100 px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-[#0f6b3a] flex items-center justify-center">
-              <Zap className="w-3.5 h-3.5 text-white" />
+              <EcoZapIcon className="w-3.5 h-3.5 text-white" />
             </div>
             <span className="font-semibold text-sm">{tenant?.business_name}</span>
           </div>
@@ -155,7 +156,7 @@ export default function DashboardPage() {
           {/* Header */}
           <div>
             <h1 className="text-2xl font-bold tracking-tight">
-              Ola, {tenant?.owner_name || "voce"} \ud83d\udc4b
+              Ola, {tenant?.owner_name || "voce"} 👋
             </h1>
             <p className="text-zinc-500 mt-1">Aqui esta o resumo do seu negocio.</p>
           </div>
