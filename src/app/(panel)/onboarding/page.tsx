@@ -9,7 +9,7 @@ import {
   ArrowRight, ArrowLeft, Building2, MessageSquare,
   BookOpen, Smartphone, CheckCircle, Sparkles, Globe, Heart,
   ShieldCheck, Flame, Coffee, QrCode, RefreshCw, Loader2, Wifi,
-  Bot, Zap, Clock, MapPin, Instagram, Brain, Target,
+  Bot, Zap, Clock, MapPin, AtSign, Brain, Target,
   HelpCircle, DollarSign, CalendarClock, Users, Megaphone,
   GraduationCap, Smile, Briefcase, Stethoscope, ShoppingBag,
   UtensilsCrossed, Home, Car, Scissors, PawPrint, Dumbbell,
@@ -274,7 +274,7 @@ export default function OnboardingPage() {
 
       <div className="max-w-2xl mx-auto px-6 py-10">
 
-        {/* ═══ STEP 1: Welcome + Como a IA funciona ═══ */}
+        {/* STEP 1: Welcome + Como a IA funciona */}
         {step === 1 && (
           <div className="space-y-8">
             <div className="text-center space-y-4">
@@ -334,7 +334,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ═══ STEP 2: Business Profile (expandido) ═══ */}
+        {/* STEP 2: Business Profile (expandido) */}
         {step === 2 && (
           <div className="space-y-7">
             <div>
@@ -394,7 +394,7 @@ export default function OnboardingPage() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-[12px] font-semibold text-white/40 uppercase tracking-wider flex items-center gap-1.5">
-                    <Instagram className="w-3 h-3" /> Instagram
+                    <AtSign className="w-3 h-3" /> Instagram
                   </label>
                   <input value={businessInstagram} onChange={(e) => setBusinessInstagram(e.target.value)}
                     placeholder="@seuperfil"
@@ -421,7 +421,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ═══ STEP 3: Bot Identity (expandido) ═══ */}
+        {/* STEP 3: Bot Identity (expandido) */}
         {step === 3 && (
           <div className="space-y-7">
             <div>
@@ -474,7 +474,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ═══ STEP 4: Connect WhatsApp ═══ */}
+        {/* STEP 4: Connect WhatsApp */}
         {step === 4 && (
           <div className="space-y-7">
             <div>
@@ -541,7 +541,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ═══ STEP 5: Perguntas de Qualificacao ═══ */}
+        {/* STEP 5: Perguntas de Qualificacao */}
         {step === 5 && (
           <div className="space-y-7">
             <div>
@@ -591,7 +591,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ═══ STEP 6: Knowledge Links ═══ */}
+        {/* STEP 6: Knowledge Links */}
         {step === 6 && (
           <div className="space-y-7">
             <div>
@@ -632,7 +632,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ═══ STEP 7: Done ═══ */}
+        {/* STEP 7: Done */}
         {step === 7 && (
           <div className="space-y-8 text-center">
             <div className="space-y-4">
