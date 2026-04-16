@@ -108,8 +108,8 @@ export default function DashboardPage() {
       <aside className="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-zinc-100 hidden lg:flex flex-col">
         <div className="p-6 border-b border-zinc-100">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
-              <EcoZapIcon className="w-4 h-4 text-white" />
+            <div className="w-11 h-11 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
+              <EcoZapIcon className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="font-semibold text-sm tracking-tight">EcoZap</div>
@@ -142,8 +142,8 @@ export default function DashboardPage() {
         {/* Top bar mobile */}
         <div className="lg:hidden sticky top-0 z-10 bg-white border-b border-zinc-100 px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#0f6b3a] flex items-center justify-center">
-              <EcoZapIcon className="w-3.5 h-3.5 text-white" />
+            <div className="w-10 h-10 rounded-lg bg-[#0f6b3a] flex items-center justify-center">
+              <EcoZapIcon className="w-[18px] h-[18px] text-white" />
             </div>
             <span className="font-semibold text-sm">{tenant?.business_name}</span>
           </div>

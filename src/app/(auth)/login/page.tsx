@@ -40,8 +40,8 @@ export default function LoginPage() {
       {/* Left — Branding */}
       <div className="hidden lg:flex lg:w-[45%] bg-gradient-to-br from-[#0f6b3a] to-[#0a4d2a] flex-col justify-between p-12 text-white">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur">
-            <EcoZapIcon className="w-5 h-5" />
+          <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center backdrop-blur">
+            <EcoZapIcon className="w-6 h-6" />
           </div>
           <span className="text-xl font-semibold tracking-tight">EcoZap</span>
         </div>
@@ -64,8 +64,8 @@ export default function LoginPage() {
         <div className="w-full max-w-sm space-y-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-3 mb-4">
-            <div className="w-9 h-9 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
-              <EcoZapIcon className="w-4 h-4 text-white" />
+            <div className="w-11 h-11 rounded-xl bg-[#0f6b3a] flex items-center justify-center">
+              <EcoZapIcon className="w-5 h-5 text-white" />
             </div>
             <span className="text-lg font-semibold tracking-tight">EcoZap</span>
           </div>
